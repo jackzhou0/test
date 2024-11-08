@@ -23,7 +23,7 @@ RUN wget --quiet --output-document=android-wait-for-emulator https://raw.githubu
 RUN apt install -y software-properties-common
 RUN add-apt-repository ppa:bastif/google-android-installers
 RUN apt update -y
-RUN apt install google-android-cmdline-tools-12.0-installer google-android-emulator-installer -y
+RUN echo 1 | apt install google-android-cmdline-tools-12.0-installer google-android-emulator-installer -y
 RUN chmod +x android-wait-for-emulator
 RUN sdkmanager --list
 RUN ls -lha
