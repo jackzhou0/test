@@ -20,6 +20,7 @@ RUN sdkmanager "build-tools;33.0.2"
 RUN apt-get install libx11-dev libpulse0 libgl1 libnss3 libxcomposite-dev libxcursor1 libasound2 --yes
 RUN sdkmanager --sdk_root=/opt/android-sdk-root "emulator" "system-images;android-33;default;x86_64"
 RUN wget --quiet --output-document=android-wait-for-emulator https://raw.githubusercontent.com/travis-ci/travis-cookbooks/0f497eb71291b52a703143c5cd63a217c8766dc9/community-cookbooks/android-sdk/files/default/android-wait-for-emulator
+RUN apt install software-properties-common
 RUN add-apt-repository ppa:bastif/google-android-installers
 RUN apt update -y
 RUN apt install google-android-cmdline-tools-12.0-installer google-android-emulator-installer -y
