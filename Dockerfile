@@ -11,7 +11,6 @@ RUN echo $ANDROID_HOME
 RUN install -d $ANDROID_HOME
 RUN wget --no-verbose --output-document=$ANDROID_HOME/cmdline-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
 RUN unzip -q -d "$ANDROID_HOME/cmdline-tools" "$ANDROID_HOME/cmdline-tools.zip"
-RUN mv -T "$ANDROID_HOME/cmdline-tools/cmdline-tools" "$ANDROID_HOME/cmdline-tools/tools"
 RUN export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/cmdline-tools/tools/bin:$ANDROID_HOME/platform-tools/
 RUN sdkmanager --version
 RUN yes | sdkmanager --licenses > /dev/null || true
@@ -28,6 +27,6 @@ RUN chmod +x android-wait-for-emulator
 RUN sdkmanager --list
 RUN ls -lha
 RUN export ANDROID_SDK_ROOT=/opt/android-sdk-root
-RUN echo no | /opt/android-sdk-root/cmdline-tools/tools/bin/avdmanager create avd --force -n myavd -k "system-images;android-33;default;x86_64"
+RUN echo no | /opt/android-sdk-root/cmdline-tools/cmdline-tools/bin/avdmanager create avd --force -n myavd -k "system-images;android-33;default;x86_64"
 RUN emulator -list-avds
 CMD [ "bash" ]
