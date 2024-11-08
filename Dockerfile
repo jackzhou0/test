@@ -9,7 +9,7 @@ RUN apt update -y
 RUN chmod +x android-wait-for-emulator
 RUN sdkmanager --list
 RUN ls -lha
-RUN export ANDROID_SDK_ROOT=/opt/android-sdk-root
+RUN export ANDROID_SDK_ROOT=$ANDROID_HOME
 RUN echo no | $ANDROID_HOME/cmdline-tools/cmdline-tools/bin/avdmanager create avd --force -n myavd -k "system-images;android-33;default;x86_64"
 RUN emulator -list-avds
 CMD [ "bash" ]
